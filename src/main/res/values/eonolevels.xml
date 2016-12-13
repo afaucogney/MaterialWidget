@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="oenolevels">
+        <item>Oeno-Vice (4 étapes)</item>
+        <item>Oeno-Pote (9 étapes)</item>
+        <item>Oeno-Phile (13 étapes)</item>
+        <item>Oeno-Logue (19 étapes)</item>
+
+    </array>
+
+</resources>

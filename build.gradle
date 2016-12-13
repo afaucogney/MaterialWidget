@@ -1,0 +1,28 @@
+apply plugin: 'com.android.library'
+
+sonarqube {
+    properties {
+        property "sonar.sources", "src/main"
+    }
+}
+
+android {
+    compileSdkVersion ANDROID_BUILD_SDK_VERSION
+    buildToolsVersion ANDROID_BUILD_TOOLS_VERSION
+
+    defaultConfig {
+        targetSdkVersion ANDROID_BUILD_TARGET_SDK_VERSION
+        minSdkVersion ANDROID_BUILD_MIN_SDK_VERSION
+        versionCode 1
+        versionName "1.0"
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+}
+
+dependencies {
+    compile 'com.android.support:support-v4:' + LIB_ANDROIDSUPPORT_VERSION
+    compile 'com.android.support:support-annotations:' + LIB_ANDROIDSUPPORT_VERSION
+}
