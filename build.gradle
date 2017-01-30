@@ -1,10 +1,22 @@
 apply plugin: 'com.android.library'
 
-sonarqube {
-    properties {
-        property "sonar.sources", "src/main"
+
+if (USE_SONAR==1) {
+    sonarqube {
+        properties {
+            property "sonar.sources", "src/main"
+        }
     }
 }
+
+// Java8 not fully supported in library projects yet, https://code.google.com/p/android/issues/detail?id=211386
+// this is a temporary workaround to get at least lambdas compiling
+gradle.projectsEvaluated {
+    tasks.withType(JavaCompile) {
+        options.compilerArgs << "-Xbootclasspath/a:" + System.properties.get("java.home") + "/lib/rt.jar"
+    }
+}
+
 
 android {
     compileSdkVersion ANDROID_BUILD_SDK_VERSION
@@ -20,6 +32,8 @@ android {
     lintOptions {
         abortOnError false
     }
+
+
 }
 
 dependencies {
